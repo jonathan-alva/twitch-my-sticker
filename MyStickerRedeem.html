@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture HTML as Image</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+		body {
+			width: fit-content;
+		}
+        .image {
+			height: 150px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			opacity: 0.95;
+			margin-top: auto;
+			margin-bottom: auto;
+			width: 150px;
+			border: 2px solid black;
+			border-radius: 20px;
+			left: 235px;
+			position: relative;
+			top: -45px;
+		}
+		
+		.talk-bubble {
+			margin: 40px;
+			display: inline-block;
+			position: relative;
+			width: 200px;
+			height: auto;
+			background-color: lightyellow;
+		}
+
+		.tri-right.border.btm-right-in:before {
+			content: ' ';
+			position: absolute;
+			width: 0;
+			height: 0;
+			left: auto;
+			right: 30px;
+			bottom: -30px;
+			border: 14px solid;
+			border-color: #666 #666 transparent transparent;
+		}
+		.tri-right.btm-right-in:after{
+			content: ' ';
+			position: absolute;
+			width: 0;
+			height: 0;
+			left: auto;  
+			right: 35px;
+			bottom: -17px;
+			border: 12px solid;
+			border-color: lightyellow lightyellow transparent transparent;
+		}
+		.talktext{
+			padding: 1em;
+			text-align: left;
+			line-height: 1.5em;
+			height:130px;
+		}
+		.talktext p{
+			/* remove webkit p margins */
+			-webkit-margin-before: 0em;
+			-webkit-margin-after: 0em;
+			color: lightyellow;
+		}
+		.border{
+			border: 5px solid #666;
+			border-radius: 20px;
+		}
+		.pokeball {
+			position: absolute;
+			z-index: 100;
+			width: 230px;
+			left: 53px;
+			top: 33px;
+		}
+		.poke {
+			position: absolute;
+			width: 150px;
+			left: 79px;
+			z-index: 101;
+			top: 58px;
+			display: none;
+		}
+		.page-header {
+			display: flex;
+			align-items: center;
+			border: 4px solid black;
+			border-radius: 50px;
+			position: relative;
+			padding: 20px;
+		}
+		.user-image {
+			width: 100px;
+		}
+		.userName {
+			font-size: 38px;
+			font-weight: 700;
+		}
+		.pokemon {
+			border: 2px solid black;
+			border-radius: 50%;
+			width: 70px;
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.stickers {
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			gap: 10px; /* Space between items */
+		}
+		.grid-item {
+			background-color: #ccc;
+			padding: 10px;
+			text-align: center;
+		}
+		.page-container {
+			border: 4px solid black;
+			border-radius: 20px;
+			padding: 15px;
+		}
+		.normal {
+			background: hsla(43,47%,94%,.928);;
+		}
+		.fighting {
+			background: hsla(0,66%,91%,.886);
+		} 
+		.flying {
+			background: rgba(247,233,242,.928);;
+		}
+  
+		.poison {
+			background: rgba(242,233,247,.928);;
+		}
+		.ground {
+			background: hsla(39,47%,94%,.928);;
+		} 
+		.rock {
+			background: hsla(35,58%,85%,.796);;
+		}
+
+		.bug {
+			background: rgba(234,247,233,.928);
+		} 
+  		.ghost {
+			background: rgba(245,233,247,.823);;
+		}
+		.steel {
+			background: hsla(43,47%,94%,.928);
+		} 
+		.fire {
+			background: hsla(0,47%,94%,.928);;
+		}
+  		.water{
+			background: rgba(176,224,238,.928);
+		}
+  		.grass {
+			background: rgba(233,247,239,.928);;
+		}
+		.electric {
+			background: hsla(51,47%,94%,.928);
+		}
+		.psychic {
+			background: rgba(247,233,243,.928);
+		}
+		.ice {
+			background: rgba(233,238,247,.928);
+		}
+		.dragon {
+			background: rgba(240,233,247,.928);
+		} 
+		.dark {
+			background: hsla(45,2%,57%,.27);
+		} 
+		.fairy {
+			background: rgba(247,233,244,.928);;
+		}
+		.unknown {
+			background: hsla(43,47%,94%,.928);
+		} 
+		.shadow {
+			background: rgba(247,233,243,.928);
+		}
+
+		.header-left {
+			display: flex;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			border-right: 4px solid black;
+			padding-right: 20px;
+		}
+		.haeder-right {
+			display: flex;
+			flex-direction: column;
+			padding-left: 20px;
+		}
+		.right-container {
+			display: flex;
+			align-items: center;
+			font-size: 30px;
+		}
+		.twitch-icon {
+			padding-right: 15px;
+		}
+		.my-twitch {
+			font-size: 30px;
+		}
+		.collected {
+			display: flex;
+			font-size: 20px;
+			margin-top: 35px;
+		}
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="page-header">
+			<div class="header-left">
+				<img src="" class="user-image">
+				<div class="userName">XXXX</div>
+			</div>
+			<div class="haeder-right">
+				<div class="right-container">
+					<i class="fa fa-twitch twitch-icon"></i> 
+					<div class="my-twitch">Joo_Nathan</div>
+				</div>
+				<div class="collected"></div>
+			</div>
+        </div>
+        <hr/>
+        <div class="stickers"></div>
+    <div>
+
+		<script>
+			$(document).ready(function() {
+				var urlParams = new URLSearchParams(window.location.search);
+				var image = urlParams.get('image');
+				var sticker = urlParams.get('stickers');
+				var userName = urlParams.get('user');
+		
+				$(".user-image").attr("src", image);
+				$(".userName").html(userName);
+				
+				var stickerNumbers = sticker.split("|");
+				$(".collected").html(stickerNumbers.length + "/151")
+				let imagePromises = [];
+		
+				async function generatePokemonGrid() {
+					for (let i = 1; i <= 151; i++) {
+						var elem = "<div class='grid-item pokemon'>" + i + "</div>";
+						
+						for (const id of stickerNumbers) {
+							if (id == i) {
+								var pokemonURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + id + ".png";
+								var pokemonType = await getPokemonFirstType(id); // Await the type
+		
+								elem = `<div><img class='grid-item pokemon ${pokemonType}' src="${pokemonURL}"></div>`;
+		
+								// Add each image loading to the promises array
+								imagePromises.push(new Promise((resolve) => {
+									var img = new Image();
+									img.src = pokemonURL;
+									img.onload = resolve;
+								}));
+							}
+						}
+						
+						$(".stickers").append(elem);
+					}
+		
+					// Wait for all images to load before capturing the screenshot
+					await Promise.all(imagePromises);
+					
+					// Capture the page as an image
+					html2canvas(document.querySelector('.page-container'), {
+						scale: 2, // Adjust this value to increase resolution
+						useCORS: true,
+						allowTaint: true,
+					}).then(canvas => {
+						const imgData = canvas.toDataURL('image/png');
+						
+						$.ajax({
+							url: 'http://localhost:8081/save-image',
+							method: 'POST',
+							data: JSON.stringify({
+								image: imgData,
+								fileName: userName + '.png'
+							}),
+							contentType: 'application/json',
+							success: function(response) {
+								console.log('Image saved successfully:', response);
+							},
+							error: function(error) {
+								console.error('Error saving image:', error);
+							}
+						});
+					});
+				}
+		
+				// Call the function to generate the grid and capture the screenshot
+				generatePokemonGrid();
+		
+				async function getPokemonFirstType(pokemon) {
+					const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+					
+					try {
+						const response = await fetch(url);
+						const data = await response.json();
+		
+						// Get the first type
+						const firstType = data.types[0].type.name;
+		
+						console.log(`${pokemon.charAt(0).toUpperCase() + pokemon.slice(1)}'s first type is: ${firstType}`);
+						return firstType;
+					} catch (error) {
+						console.error("Error fetching the Pokémon data:", error);
+					}
+				}
+			});
+		</script>
+		
+</body>
+</html>
