@@ -538,6 +538,15 @@
 			background-size: 100px;
 		}
 
+		.pokemon-desc {
+			margin-bottom: 30px;
+		}
+
+		.pokemon-evolution {
+			.text-title {
+				margin-bottom: 10px;
+			}
+		}
     </style>
 </head>
 <body>
@@ -805,12 +814,10 @@
 					}
 					if (dataExist) {
 						var pokeImageEvoElem = "<img class='poke-img-evo-detail' src='"+pokemonURL+"' />";
-						//$(".pokemon-evolution").html(pokeImageEvoElem);
 						pokeEvolElem += pokeImageEvoElem;
 					}
 					else {
 						var pokeImageEvoElem = "<div class='poke-img-evo-detail not-found'></div>";
-						//$(".pokemon-evolution").html(pokeImageEvoElem);
 						pokeEvolElem += pokeImageEvoElem;
 					}
 				$(".pokemon-evolution-chain").html(pokeEvolElem);
