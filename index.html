@@ -649,7 +649,6 @@
 					if (decryptedText) {
 						try {
 							const params = new URLSearchParams(decryptedText);
-							console.log(params)
 							// Extract the values of user, image, and sticker
 							const user = params.get('user');
 							const image = params.get('image');
