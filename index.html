@@ -671,7 +671,7 @@
 		}
 		$('#checkbox1').change(function () {
 			if (document.getElementById('checkbox1').checked == false) {
-				var pokemonURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + $(".pokemon-number").html().replace("#", "") + ".png";
+				var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + $(".pokemon-number").html().replace("#", "") + ".webp";
 				$(".poke-img-detail").attr("src", pokemonURL);
 			}
 			else {
@@ -688,7 +688,7 @@
 			
 			for (const id of stickerNumbers) {
 				if (id == i) {
-					var pokemonURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + id + ".png";
+					var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + id + ".webp";
 					var pokemonType = await getPokemonFirstType(id); // Await the type
 
 					elem = `<div><img class='pokemon-click grid-item pokemon ${pokemonType}' id="${id}" src="${pokemonURL}"></div>`;
@@ -791,7 +791,7 @@
 			$(".pokemon-detail .pokemon-height").html(`${height}`);
 			$(".pokemon-detail .pokemon-weight").html(`${weight}`);
 
-			var pokemonURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemonId + ".png"
+			var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + pokemonId + ".webp"
 			var pokeImageElem = "<img class='poke-img-detail' src='"+pokemonURL+"' />";
 			$(".pokemon-image").html(pokeImageElem);
 
@@ -803,7 +803,7 @@
 			var pokeEvolElem = ""
 			for(var i = 0 ; i < evolutionChain.length; i ++) {
 				if (evolutionChain[i] < 152) {
-					var pokemonURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + evolutionChain[i] + ".png"
+					var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + evolutionChain[i] + ".webp"
 				
 					var dataExist = false;
 					for (var j = 0 ; j < stickerList.length ; j ++) {
