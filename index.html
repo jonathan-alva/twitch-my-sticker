@@ -108,7 +108,6 @@
 			font-weight: 700;
 		}
 		.pokemon {
-			border: 2px solid black;
 			border-radius: 50%;
 			width: 70px;
 			height: 70px;
@@ -126,7 +125,6 @@
 		}
 		.grid-item {
 			background-color: #ccc;
-			padding: 10px;
 			text-align: center;
 		}
 		.page-container {
@@ -234,11 +232,20 @@
 			cursor: pointer;
 		}
 		.pokemon-detail {
-			background-color: white;
-			padding: 20px;
-			border: 2px solid black;
-			border-radius: 20px;
-			width: 550px;
+			background-color: #fff;
+			border-radius: 6px;
+			min-height: 160px;
+			--shadow: 1px 1px 1px 1px rgb(0 0 0 / 0.25);
+			box-shadow: var(--shadow);
+			justify-content: center;
+			align-items: center;
+			}
+
+		.pokemon-detail::before {
+			color: transparent;
+			background-image: linear-gradient(115deg, #fc00ff, #00dbde);
+			font-weight: 700;
+			font-size: clamp(1.2rem, 2rem + 2vw, 3rem);
 		}
 		.pokemon-number {
 			text-align: center;
@@ -540,12 +547,16 @@
 
 		.pokemon-desc {
 			margin-bottom: 30px;
+			width: 500px;
 		}
 
 		.pokemon-evolution {
 			.text-title {
 				margin-bottom: 10px;
 			}
+		}
+		.detail-p {
+			padding: 20px;
 		}
     </style>
 </head>
@@ -562,73 +573,76 @@
     </div>
 
 	<div>
-		<div class="pokemon-detail">
-			<div class="pokemon-image-shiny">
-				<div>
-					<input type="checkbox" id="checkbox1" />
-					<label for="checkbox1"></label>
-				</div>
-			</div>
-			<div class="pokemon-image"></div>
-			<div class="pokemon-number"></div>
-			<div class="pokemon-name"></div>
-			<div class="pokemon-types"></div>
-			<div class="pokemon-abilities">
-				<div class="text-title">ABILITIES</div>
-				<div class="abilities"></div>
-			</div>
-			<div class="pokemon-w-h">
-				<div class="pokemon-h">
-					<div class="text-title">HEIGHT</div>
-					<div class="pokemon-height pokemon-ability-box"></div>
-				</div>
-				<div class="pokemon-w">
-					<div class="text-title">WEIGHT</div>
-					<div class="pokemon-weight pokemon-ability-box"></div>
-				</div>
-			</div>
-			<div class="pokemon-weak">
-				<div class="text-title">WEAKNESSES</div>
-				<div class="pokemon-weaknesses pokemon-ability-box"></div>
-			</div>
-			<div class="pokemon-status">
-				<div class="text-title">STATS</div>
-				<div class="status-container">
-					<div class="stat-hp status-bar">
-						<div class="stat-name hp-text">HP</div>
-						<div class="stat-hp-value stat-value"></div>
-					</div>
-					<div class="stat-atk status-bar">
-						<div class="stat-name atk-text">ATK</div>
-						<div class="stat-atk-value stat-value"></div>
-					</div>
-					<div class="stat-def status-bar">
-						<div class="stat-name def-text">DEF</div>
-						<div class="stat-def-value stat-value"></div>
-					</div>
-					<div class="stat-special-attack status-bar">
-						<div class="stat-name spa-text">SpA</div>
-						<div class="stat-spa-value stat-value"></div>
-					</div>
-					<div class="stat-special-defend status-bar">
-						<div class="stat-name spd-text">SpD</div>
-						<div class="stat-spd-value stat-value"></div>
-					</div>
-					<div class="stat-speed status-bar">
-						<div class="stat-name speed-text">SPD</div>
-						<div class="stat-speed-value stat-value"></div>
-					</div>
-					<div class="stat-total status-bar">
-						<div class="stat-name tot-text">TOT</div>
-						<div class="stat-total-value stat-value"></div>
+		<div class="pokemon-detail" style="--shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+			<div class="detail-p">
+				<div class="pokemon-image-shiny">
+					<div>
+						<input type="checkbox" id="checkbox1" />
+						<label for="checkbox1"></label>
 					</div>
 				</div>
+				<div class="pokemon-image"></div>
+				<div class="pokemon-number"></div>
+				<div class="pokemon-name"></div>
+				<div class="pokemon-types"></div>
+				<div class="pokemon-abilities">
+					<div class="text-title">ABILITIES</div>
+					<div class="abilities"></div>
+				</div>
+				<div class="pokemon-w-h">
+					<div class="pokemon-h">
+						<div class="text-title">HEIGHT</div>
+						<div class="pokemon-height pokemon-ability-box"></div>
+					</div>
+					<div class="pokemon-w">
+						<div class="text-title">WEIGHT</div>
+						<div class="pokemon-weight pokemon-ability-box"></div>
+					</div>
+				</div>
+				<div class="pokemon-weak">
+					<div class="text-title">WEAKNESSES</div>
+					<div class="pokemon-weaknesses pokemon-ability-box"></div>
+				</div>
+				<div class="pokemon-status">
+					<div class="text-title">STATS</div>
+					<div class="status-container">
+						<div class="stat-hp status-bar">
+							<div class="stat-name hp-text">HP</div>
+							<div class="stat-hp-value stat-value"></div>
+						</div>
+						<div class="stat-atk status-bar">
+							<div class="stat-name atk-text">ATK</div>
+							<div class="stat-atk-value stat-value"></div>
+						</div>
+						<div class="stat-def status-bar">
+							<div class="stat-name def-text">DEF</div>
+							<div class="stat-def-value stat-value"></div>
+						</div>
+						<div class="stat-special-attack status-bar">
+							<div class="stat-name spa-text">SpA</div>
+							<div class="stat-spa-value stat-value"></div>
+						</div>
+						<div class="stat-special-defend status-bar">
+							<div class="stat-name spd-text">SpD</div>
+							<div class="stat-spd-value stat-value"></div>
+						</div>
+						<div class="stat-speed status-bar">
+							<div class="stat-name speed-text">SPD</div>
+							<div class="stat-speed-value stat-value"></div>
+						</div>
+						<div class="stat-total status-bar">
+							<div class="stat-name tot-text">TOT</div>
+							<div class="stat-total-value stat-value"></div>
+						</div>
+					</div>
+				</div>
+				<div class="pokemon-desc"></div>
+				<div class="pokemon-evolution">
+					<div class="text-title">EVOLUTION</div>
+					<div class="pokemon-evolution-chain"></div>
+				</div>
 			</div>
-			<div class="pokemon-desc"></div>
-			<div class="pokemon-evolution">
-				<div class="text-title">EVOLUTION</div>
-				<div class="pokemon-evolution-chain"></div>
-			</div>
+			
 			
 		</div>
 
@@ -636,14 +650,97 @@
 	
 
     <script>
-       $(document).ready(function() {
-		const urlParams = new URLSearchParams(window.location.search);
-		const data = urlParams.get('data').replace(/ /g, '+'); // Get 'data' parameter from the URL
-		if (data) {
-			// Split the encrypted data and IV
+
+		// Fetch only the basic Pokémon data (name, id, etc.) for the grid
+		async function getPokemonSpeciesData(pokemonId) {
+            const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`;
+            const response = await fetch(url);
+            return response.json();
+        }
+
+		// Fetch detailed Pokémon data only when needed (on click)
+        async function getPokemonDetails(pokemonId) {
+            const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
+            const response = await fetch(url);
+            return response.json();
+        }
+
+        // Function to generate the grid and load the Pokémon species data
+        async function generatePokemonGrid(stickerNumbers) {
+			console.log(stickerNumbers)
+			const stickersContainer = document.querySelector('.stickers');
+            const pokemonIds = Array.from({ length: 151 }, (_, i) => i + 1);
+
+            try {
+                const pokemonSpeciesPromises = pokemonIds.map(id => getPokemonSpeciesData(id));
+                const pokemonSpeciesList = await Promise.all(pokemonSpeciesPromises);
+
+                pokemonSpeciesList.forEach((pokemonSpecies, index) => {
+					var isExist = false;
+					for (var i = 0 ; i < stickerNumbers.length ; i ++) {
+						if (index == stickerNumbers[i]) {
+							isExist = true;
+						}
+					}
+					if (isExist) {
+						const pokemonId = index + 1;
+						const pokemonImageUrl = `https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-${pokemonId}.webp`;
+
+						// Create Pokémon grid item
+						const pokemonElement = document.createElement('div');
+						pokemonElement.classList.add('pokemon');
+						pokemonElement.id = `pokemon-${pokemonId}`;
+						pokemonElement.innerHTML = `
+							<img src="${pokemonImageUrl}" alt="${pokemonSpecies.name}" class='pokemon-click grid-item pokemon'">
+							
+						`;
+						pokemonElement.addEventListener('click', () => fetchPokemonDetail(pokemonId));
+
+						stickersContainer.appendChild(pokemonElement);
+
+					}
+					else {
+						const pokemonElement = document.createElement('div');
+						pokemonElement.classList.add('pokemon');
+						pokemonElement.innerHTML = `
+							<div src="" class='grid-item pokemon'">${index + 1}</div>
+						`;
+						stickersContainer.appendChild(pokemonElement);
+					}
+                });
+            } catch (error) {
+                console.error('Error loading Pokémon grid:', error);
+            }
+        }
+
+		// Function to decrypt the data (unchanged)
+		async function decryptData(encryptedData, base64IV) {
+			const encryptionKey = "hmcsoRKz3bQznCXT";  // The key used for encryption
+			const keyBytes = new TextEncoder().encode(encryptionKey);
+			const iv = Uint8Array.from(atob(base64IV), c => c.charCodeAt(0));
+			const encryptedBytes = Uint8Array.from(atob(encryptedData), c => c.charCodeAt(0));
+			const key = await window.crypto.subtle.importKey(
+				'raw',
+				keyBytes,
+				{ name: 'AES-CBC' },
+				false,
+				['decrypt']
+			);
+			const decrypted = await window.crypto.subtle.decrypt(
+				{ name: 'AES-CBC', iv: iv },
+				key,
+				encryptedBytes
+			);
+			return new TextDecoder().decode(decrypted);
+		}
+
+        // Initialize the grid on page load
+        window.addEventListener('DOMContentLoaded', () => {
+			const urlParams = new URLSearchParams(window.location.search);
+			const data = urlParams.get('data').replace(/ /g, '+'); // Get 'data' parameter from the URL
+			
 			const [encryptedData, base64IV] = data.split(':');
 
-			// Decrypt the data
 			decryptData(encryptedData, base64IV)
 				.then(decryptedText => {
 					if (decryptedText) {
@@ -659,16 +756,15 @@
 							$(".userName").html(user);
 							const stickerNumbers = sticker.split("|");
 							$(".collected").html(stickerNumbers.length + "/151");
+							
 							generatePokemonGrid(stickerNumbers);
-						} catch (error) {
+						}
+						catch (error) {
 							console.error('Error parsing decrypted data:', error);
 						}
-					}
+					} 
 				})
-				.catch(err => {
-					console.error("Decryption failed:", err);
-				});
-		}
+        });
 		$('#checkbox1').change(function () {
 			if (document.getElementById('checkbox1').checked == false) {
 				var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + $(".pokemon-number").html().replace("#", "") + ".webp";
@@ -679,244 +775,200 @@
 				$(".poke-img-detail").attr("src", pokemonURL);
 			}
 		});
-	});
 
-	// Generate the Pokémon grid and attach click listeners
-	async function generatePokemonGrid(stickerNumbers) {
-		for (let i = 1; i <= 151; i++) {
-			var elem = "<div class='grid-item pokemon' id="+ i + ">" + i + "</div>";
+
+		async function fetchPokemonDetail(pokemonId) {
+			document.getElementById('checkbox1').checked = false;
+
+			const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
 			
-			for (const id of stickerNumbers) {
-				if (id == i) {
-					var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + id + ".webp";
-					var pokemonType = await getPokemonFirstType(id); // Await the type
-
-					elem = `<div><img class='pokemon-click grid-item pokemon ${pokemonType}' id="${id}" src="${pokemonURL}"></div>`;
-				}
-			}
-			$(".stickers").append(elem);
-		}
-
-		// Attach click event to the dynamically generated Pokémon elements
-		$(".pokemon-click").click(function() {
-			const pokemonId = $(this).attr("id");  // Get the Pokémon ID from the clicked element
-			fetchPokemonDetail(pokemonId);
-		});
-	}
-
-	async function fetchPokemonDetail(pokemonId) {
-		document.getElementById('checkbox1').checked = false;
-
-		const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
-		
-		try {
-			const response = await fetch(url);
-			const data = await response.json();
-
-			// Extract necessary details
-			const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);  // Capitalize name
-			const number = data.id;
-			const types = data.types.map(t => t.type.name); // Array of types
-			const abilities = data.abilities.map(a => a.ability.name);
-			const stats = data.stats.map(stat => `${stat.stat.name.toUpperCase()}: ${stat.base_stat}`);
-
-			const height = (data.height / 10).toFixed(1) + " m";
-			const weight = (data.weight / 10).toFixed(1) + " kg";
-			
-			// Fetch Pokémon species to get description
-			const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`;
-			const speciesResponse = await fetch(speciesUrl);
-			const speciesData = await speciesResponse.json();
-			var description = speciesData.flavor_text_entries.find(entry => entry.language.name === 'en').flavor_text;
-			// Clean up description: remove newlines (\n) and form feed (\f) while preserving "é"
-			description = description.replace(/(\r\n|\n|\r|\f)/gm, ' ').replace(/[^\x00-\x7Fé]/g, '');
-
-			// Fetch weaknesses based on types
-			const weaknesses = await getWeaknesses(types);
-			
-			// Update the Pokémon detail section
-			$(".pokemon-detail .pokemon-name").html(name);
-			$(".pokemon-detail .pokemon-number").html(`#${number}`);
-
-			// TYPE
-			var typeElemFinal = "";
-			for (let i = 0; i < types.length; i ++) {
-				const typeElem = "<div class='pokemon-type-box type-"+ types[i]+"'>"+types[i].toUpperCase()+"</div>";
-				typeElemFinal += typeElem;
-			}
-			$(".pokemon-detail .pokemon-types").html(typeElemFinal);
-
-			// ABILITIES
-			var abilityElemFinal = "";
-			for (let i = 0; i < abilities.length; i ++) {
-				const abilityElem = "<div class='pokemon-ability-box'>"+abilities[i].replace("-", " ")+"</div>";
-				abilityElemFinal += abilityElem;
-			}
-			$(".pokemon-detail .abilities").html(abilityElemFinal);
-
-			// Weaknesses
-			var weaknessElemFinal = "";
-			for (let i = 0; i < weaknesses.length; i ++) {
-				const weaknessElem = "<div class='pokemon-weakness-circle "+weaknesses[i]+"-type-icon'></div>";
-				weaknessElemFinal += weaknessElem;
-			}
-			$(".pokemon-detail .pokemon-weaknesses").html(weaknessElemFinal);
-
-			// Status
-			var totalStat = 0;
-			for (let i = 0 ; i < stats.length; i ++) {
-				var splitText = stats[i].split(": ");
-				totalStat += parseInt(splitText[1]);
-				if (splitText[0] == 'HP') {
-					$(".stat-hp-value").html(splitText[1]) ;
-				}
-				else if (splitText[0] == 'ATTACK') {
-					$(".stat-atk-value").html(splitText[1]);
-				}
-				else if (splitText[0] == 'DEFENSE') {
-					$(".stat-def-value").html(splitText[1]);
-				}
-				else if (splitText[0] == 'SPECIAL-ATTACK') {
-					$(".stat-spa-value").html(splitText[1]);
-				}
-				else if (splitText[0] == 'SPECIAL-DEFENSE') {
-					$(".stat-spd-value").html(splitText[1]);
-				}
-				else if (splitText[0] == 'SPEED') {
-					$(".stat-speed-value").html(splitText[1]);
-				}
-			}
-			$(".stat-total-value").html(totalStat);
-			$(".pokemon-detail .pokemon-desc").html(description);
-			$(".pokemon-detail .pokemon-height").html(`${height}`);
-			$(".pokemon-detail .pokemon-weight").html(`${weight}`);
-
-			var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + pokemonId + ".webp"
-			var pokeImageElem = "<img class='poke-img-detail' src='"+pokemonURL+"' />";
-			$(".pokemon-image").html(pokeImageElem);
-
-			// Fetch evolution chain
-			const evolutionChainUrl = speciesData.evolution_chain.url;
-        	const evolutionChain = await fetchEvolutionChain(evolutionChainUrl);
-			var stickerList = $(".page-container").attr("data-poke-list").split("|");
-
-			var pokeEvolElem = ""
-			for(var i = 0 ; i < evolutionChain.length; i ++) {
-				if (evolutionChain[i] < 152) {
-					var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + evolutionChain[i] + ".webp"
-				
-					var dataExist = false;
-					for (var j = 0 ; j < stickerList.length ; j ++) {
-						if (stickerList[j] == evolutionChain[i]) {
-							dataExist = true
-						}
-					}
-					if (dataExist) {
-						var pokeImageEvoElem = "<img class='poke-img-evo-detail' src='"+pokemonURL+"' />";
-						pokeEvolElem += pokeImageEvoElem;
-					}
-					else {
-						var pokeImageEvoElem = "<div class='poke-img-evo-detail not-found'></div>";
-						pokeEvolElem += pokeImageEvoElem;
-					}
-				$(".pokemon-evolution-chain").html(pokeEvolElem);
-					
-				}
-			}
-
-		} catch (error) {
-			console.error("Error fetching Pokémon details:", error);
-		}
-	}
-
-	async function fetchEvolutionChain(evolutionChainUrl) {
-		try {
-			const response = await fetch(evolutionChainUrl);
-			const data = await response.json();
-
-			// Extract evolution details
-			const evolutionChain = [];
-			let currentEvolution = data.chain;
-
-			// Traverse through the evolution chain
-			while (currentEvolution) {
-				// Extract Pokémon ID from the species URL
-				const speciesUrl = currentEvolution.species.url;
-				const speciesId = speciesUrl.split('/')[6];  // Extracts ID from URL (e.g., /pokemon-species/4/)
-
-				// Format the name with the ID and push to the chain
-				evolutionChain.push(`${speciesId}`);
-
-				// Move to the next evolution stage if available
-				currentEvolution = currentEvolution.evolves_to.length > 0 ? currentEvolution.evolves_to[0] : null;
-			}
-
-			return evolutionChain;  // Format the chain
-		} catch (error) {
-			console.error("Error fetching evolution chain:", error);
-			return "No evolution data available";
-		}
-	}
-
-	// Function to fetch weaknesses based on Pokémon types
-	async function getWeaknesses(types) {
-		let weaknesses = new Set();
-
-		for (const type of types) {
-			const typeUrl = `https://pokeapi.co/api/v2/type/${type}`;
 			try {
-				const response = await fetch(typeUrl);
-				const typeData = await response.json();
+				const response = await fetch(url);
+				const data = await response.json();
 
-				// // Add all double_damage_from types to weaknesses
-				typeData.damage_relations.double_damage_from.forEach(weakType => {
-					weaknesses.add(weakType.name);
-				});
+				// Extract necessary details
+				const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);  // Capitalize name
+				const number = data.id;
+				const types = data.types.map(t => t.type.name); // Array of types
+				const abilities = data.abilities.map(a => a.ability.name);
+				const stats = data.stats.map(stat => `${stat.stat.name.toUpperCase()}: ${stat.base_stat}`);
+
+				const height = (data.height / 10).toFixed(1) + " m";
+				const weight = (data.weight / 10).toFixed(1) + " kg";
+				
+				// Fetch Pokémon species to get description
+				const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`;
+				const speciesResponse = await fetch(speciesUrl);
+				const speciesData = await speciesResponse.json();
+				var description = speciesData.flavor_text_entries.find(entry => entry.language.name === 'en').flavor_text;
+				// Clean up description: remove newlines (\n) and form feed (\f) while preserving "é"
+				description = description.replace(/(\r\n|\n|\r|\f)/gm, ' ').replace(/[^\x00-\x7Fé]/g, '');
+
+				// Fetch weaknesses based on types
+				const weaknesses = await getWeaknesses(types);
+				
+				// Update the Pokémon detail section
+				$(".pokemon-detail .pokemon-name").html(name);
+				$(".pokemon-detail .pokemon-number").html(`#${number}`);
+
+				// TYPE
+				var typeElemFinal = "";
+				for (let i = 0; i < types.length; i ++) {
+					const typeElem = "<div class='pokemon-type-box type-"+ types[i]+"'>"+types[i].toUpperCase()+"</div>";
+					typeElemFinal += typeElem;
+				}
+				$(".pokemon-detail .pokemon-types").html(typeElemFinal);
+
+				// ABILITIES
+				var abilityElemFinal = "";
+				for (let i = 0; i < abilities.length; i ++) {
+					const abilityElem = "<div class='pokemon-ability-box'>"+abilities[i].replace("-", " ")+"</div>";
+					abilityElemFinal += abilityElem;
+				}
+				$(".pokemon-detail .abilities").html(abilityElemFinal);
+
+				// Weaknesses
+				var weaknessElemFinal = "";
+				for (let i = 0; i < weaknesses.length; i ++) {
+					const weaknessElem = "<div class='pokemon-weakness-circle "+weaknesses[i]+"-type-icon'></div>";
+					weaknessElemFinal += weaknessElem;
+				}
+				$(".pokemon-detail .pokemon-weaknesses").html(weaknessElemFinal);
+
+				// Status
+				var totalStat = 0;
+				for (let i = 0 ; i < stats.length; i ++) {
+					var splitText = stats[i].split(": ");
+					totalStat += parseInt(splitText[1]);
+					if (splitText[0] == 'HP') {
+						$(".stat-hp-value").html(splitText[1]) ;
+					}
+					else if (splitText[0] == 'ATTACK') {
+						$(".stat-atk-value").html(splitText[1]);
+					}
+					else if (splitText[0] == 'DEFENSE') {
+						$(".stat-def-value").html(splitText[1]);
+					}
+					else if (splitText[0] == 'SPECIAL-ATTACK') {
+						$(".stat-spa-value").html(splitText[1]);
+					}
+					else if (splitText[0] == 'SPECIAL-DEFENSE') {
+						$(".stat-spd-value").html(splitText[1]);
+					}
+					else if (splitText[0] == 'SPEED') {
+						$(".stat-speed-value").html(splitText[1]);
+					}
+				}
+				$(".stat-total-value").html(totalStat);
+				$(".pokemon-detail .pokemon-desc").html(description);
+				$(".pokemon-detail .pokemon-height").html(`${height}`);
+				$(".pokemon-detail .pokemon-weight").html(`${weight}`);
+
+				var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + pokemonId + ".webp"
+				var pokeImageElem = "<img class='poke-img-detail' src='"+pokemonURL+"' />";
+				$(".pokemon-image").html(pokeImageElem);
+
+				// Fetch evolution chain
+				const evolutionChainUrl = speciesData.evolution_chain.url;
+				const evolutionChain = await fetchEvolutionChain(evolutionChainUrl);
+				var stickerList = $(".page-container").attr("data-poke-list").split("|");
+
+				var pokeEvolElem = ""
+				for(var i = 0 ; i < evolutionChain.length; i ++) {
+					if (evolutionChain[i] < 152) {
+						var pokemonURL = "https://jonathan-alva.github.io/twitch-my-sticker/asset/img/pokemon-" + evolutionChain[i] + ".webp"
+					
+						var dataExist = false;
+						for (var j = 0 ; j < stickerList.length ; j ++) {
+							if (stickerList[j] == evolutionChain[i]) {
+								dataExist = true
+							}
+						}
+						if (dataExist) {
+							var pokeImageEvoElem = "<img class='poke-img-evo-detail' src='"+pokemonURL+"' />";
+							pokeEvolElem += pokeImageEvoElem;
+						}
+						else {
+							var pokeImageEvoElem = "<div class='poke-img-evo-detail not-found'></div>";
+							pokeEvolElem += pokeImageEvoElem;
+						}
+					$(".pokemon-evolution-chain").html(pokeEvolElem);
+						
+					}
+				}
 
 			} catch (error) {
-				console.error("Error fetching type data:", error);
+				console.error("Error fetching Pokémon details:", error);
 			}
 		}
-		return Array.from(weaknesses); // Convert Set to Array
-	}
 
+		async function fetchEvolutionChain(evolutionChainUrl) {
+			try {
+				const response = await fetch(evolutionChainUrl);
+				const data = await response.json();
 
-	// Function to get Pokémon first type
-	async function getPokemonFirstType(pokemon) {
-		const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
-		
-		try {
-			const response = await fetch(url);
-			const data = await response.json();
+				// Extract evolution details
+				const evolutionChain = [];
+				let currentEvolution = data.chain;
 
-			// Get the first type
-			const firstType = data.types[0].type.name;
-			return firstType;
-		} catch (error) {
-			console.error("Error fetching the Pokémon data:", error);
+				// Traverse through the evolution chain
+				while (currentEvolution) {
+					// Extract Pokémon ID from the species URL
+					const speciesUrl = currentEvolution.species.url;
+					const speciesId = speciesUrl.split('/')[6];  // Extracts ID from URL (e.g., /pokemon-species/4/)
+
+					// Format the name with the ID and push to the chain
+					evolutionChain.push(`${speciesId}`);
+
+					// Move to the next evolution stage if available
+					currentEvolution = currentEvolution.evolves_to.length > 0 ? currentEvolution.evolves_to[0] : null;
+				}
+
+				return evolutionChain;  // Format the chain
+			} catch (error) {
+				console.error("Error fetching evolution chain:", error);
+				return "No evolution data available";
+			}
 		}
-	}
 
-	// Function to decrypt the data (unchanged)
-	async function decryptData(encryptedData, base64IV) {
-		const encryptionKey = "hmcsoRKz3bQznCXT";  // The key used for encryption
-		const keyBytes = new TextEncoder().encode(encryptionKey);
-		const iv = Uint8Array.from(atob(base64IV), c => c.charCodeAt(0));
-		const encryptedBytes = Uint8Array.from(atob(encryptedData), c => c.charCodeAt(0));
-		const key = await window.crypto.subtle.importKey(
-			'raw',
-			keyBytes,
-			{ name: 'AES-CBC' },
-			false,
-			['decrypt']
-		);
-		const decrypted = await window.crypto.subtle.decrypt(
-			{ name: 'AES-CBC', iv: iv },
-			key,
-			encryptedBytes
-		);
-		return new TextDecoder().decode(decrypted);
-	}
+		// Function to fetch weaknesses based on Pokémon types
+		async function getWeaknesses(types) {
+			let weaknesses = new Set();
+
+			for (const type of types) {
+				const typeUrl = `https://pokeapi.co/api/v2/type/${type}`;
+				try {
+					const response = await fetch(typeUrl);
+					const typeData = await response.json();
+
+					// // Add all double_damage_from types to weaknesses
+					typeData.damage_relations.double_damage_from.forEach(weakType => {
+						weaknesses.add(weakType.name);
+					});
+
+				} catch (error) {
+					console.error("Error fetching type data:", error);
+				}
+			}
+			return Array.from(weaknesses); // Convert Set to Array
+		}
+
+
+		// Function to get Pokémon first type
+		async function getPokemonFirstType(pokemon) {
+			const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+			
+			try {
+				const response = await fetch(url);
+				const data = await response.json();
+
+				// Get the first type
+				const firstType = data.types[0].type.name;
+				return firstType;
+			} catch (error) {
+				console.error("Error fetching the Pokémon data:", error);
+			}
+		}
 
     </script>
 </body>
