@@ -667,7 +667,6 @@
 
         // Function to generate the grid and load the Pokémon species data
         async function generatePokemonGrid(stickerNumbers) {
-			console.log(stickerNumbers)
 			const stickersContainer = document.querySelector('.stickers');
             const pokemonIds = Array.from({ length: 151 }, (_, i) => i + 1);
 
@@ -678,7 +677,7 @@
                 pokemonSpeciesList.forEach((pokemonSpecies, index) => {
 					var isExist = false;
 					for (var i = 0 ; i < stickerNumbers.length ; i ++) {
-						if (index == stickerNumbers[i]) {
+						if (index+1 == stickerNumbers[i]) {
 							isExist = true;
 						}
 					}
